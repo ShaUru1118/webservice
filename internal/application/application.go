@@ -42,7 +42,7 @@ func CalcHandler(w http.ResponseWriter, r *http.Request) {
 	errunmar := json.Unmarshal(body, &datago)
 
 	if errunmar != nil {
-		anserr := postError{Error: "Internal server error : json.Unmarshal"}
+		anserr := postError{Error: "Internal server error : json.Unmarshal(body, &datago)"}
 		jsonstr, _ := json.Marshal(anserr)
 		http.Error(w, string(jsonstr), 500)
 		fmt.Println("Error: ", anserr.Error)
