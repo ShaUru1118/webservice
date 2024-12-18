@@ -29,7 +29,7 @@ WebService - проект, позволяющий с помощью POST зап�
 
     curl -X POST -H 'Content-Type:application/json' -d '\{\"expression\":\"*YOUR_EXPRESSION*\"\}' http://localhost:8080/api/v1/calculate
 
-где ***YOUR_EXPRESSION*** - ваше выражение
+где ***YOUR_EXPRESSION*** - ваше математическое выражение
 
 ---
 
