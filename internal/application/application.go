@@ -1,13 +1,15 @@
-package pkg
+package application
 
 import (
 	"fmt"
 	"net/http"
+
+	"github.com/shauru1118/webservice/pkg/simplecalc"
 )
 
 func CalcHandler(w http.ResponseWriter, r *http.Request) {
 	expretion := r.URL.Query().Get("expression")
-	res, errcalc := Calc(expretion)
+	res, errcalc := simplecalc.Calc(expretion)
 	if errcalc != nil {
 		http.Error(w, "Expression is not valid", 422)
 	}

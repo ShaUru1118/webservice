@@ -3,11 +3,11 @@ package cmd
 import (
 	"fmt"
 
-	"../pkg"
+	"github.com/shauru1118/webservice/internal/application"
 )
 
 func main() {
 	fmt.Println("main: Start")
-	pkg.StartServer()
+	application.StartServer()
 	fmt.Println("main: End")
 }
