@@ -6,7 +6,7 @@ import (
 	"github.com/shauru1118/webservice/internal/application"
 )
 
-func Main() {
+func main() {
 	fmt.Println("main: Start")
 	application.StartServer()
 	fmt.Println("main: End")
