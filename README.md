@@ -36,12 +36,12 @@ WebService - проект, позволяющий с помощью POST зап�
 ПРИМЕРЫ ИСПОЛЬЗОВАНИЯ.
   1. Команда
 
-          curl -X POST -H 'Content-Type:application/json' -d '\{\"expression\":\"2+2\*2\"\}' http://localhost:8080/api/v1/calculate
+          curl -X POST -H 'Content-Type:application/json' -d '\{\"expression\":\"2+2*2\"\}' http://localhost:8080/api/v1/calculate
      вернет {"result":"6"}, т. к. выражение задано правильно и других ошибок нет.
 
   3. Команда
 
-          curl -X POST -H 'Content-Type:application/json' -d '\{\"expression\":\"+2\*2\"\}' http://localhost:8080/api/v1/calculate
+          curl -X POST -H 'Content-Type:application/json' -d '\{\"expression\":\"+2*2\"\}' http://localhost:8080/api/v1/calculate
      вернет {"error":"Expression is not valid : simplecalc.Calc(expretion)"}, т. к. выражение составлено не правильно.
 
   5. Команда
