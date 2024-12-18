@@ -1,4 +1,4 @@
-package simplecalc
+package pkg
 
 import (
 	"fmt"

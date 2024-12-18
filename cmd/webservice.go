@@ -3,11 +3,11 @@ package cmd
 import (
 	"fmt"
 
-	"../pkg/application"
+	"../pkg"
 )
 
 func main() {
 	fmt.Println("main: Start")
-	application.StartServer()
+	pkg.StartServer()
 	fmt.Println("main: End")
 }
