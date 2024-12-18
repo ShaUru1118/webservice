@@ -3,7 +3,7 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/ShaUru1118/webservice/internal/application"
+	"../pkg/application"
 )
 
 func main() {

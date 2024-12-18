@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/ShaUru1118/webservice/pkg/simplecalc"
+	"../simplecalc"
 )
 
 func CalcHandler(w http.ResponseWriter, r *http.Request) {
