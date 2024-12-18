@@ -8,48 +8,45 @@ WebService - проект, позволяющий с помощью POST зап�
 
 Для начала скачайте архив с кодом из последнего релиза.
 Распакуйте в удобную для вас папку и запустите _терминал_ из нее.
+
 Используя команду
 
-**go run .\main\webservice.go**
+    go run .\main\webservice.go
 
 вы запустите сервер, и он сможет обрабатыввать ваши запросы.
+После этого вы сможете, используя curl, обращаться к серверу.
 
-После этого вы можете, используя curl, обращаться к серверу.
 В ответ вы получите результат работы:
 
-1. Ответ на ваше математическое выражение.
-2. Ошибку
+1. Ответ на ваше математическое выражение ({"result":"6"}).
+2. Ошибку:
+     *  **"Internal server error : r.Body.Read(data)"** - не смог прочитать Body в r *http.Request.
+     *  **"Internal server error : json.Unmarshal(body, &datago)"** - не смог преобразовать структуру json в структуру go.
+     *  **"Expression is not valid : simplecalc.Calc(expretion)"** - не смог посчитать ответ, так как выражение написано неправильно.
 
 Чтобы отправить запрос, воспользуйтесь командой
 
-**curl -X POST -H 'Content-Type:application/json' -d '\{\"expression\":\"YOUR_EXPRESSION\"\}' http://localhost:8080/api/v1/calculate**
+    curl -X POST -H 'Content-Type:application/json' -d '\{\"expression\":\"*YOUR_EXPRESSION*\"\}' http://localhost:8080/api/v1/calculate
 
-где **YOUR_EXPRESSION** - ваше выражение
+где ***YOUR_EXPRESSION*** - ваше выражение
 
 ---
 
 ПРИМЕРЫ ИСПОЛЬЗОВАНИЯ.
+  1. Команда
 
-curl -X POST -H 'Content-Type:application/json' -d '\{\"expression\":\"2+2\*2\"\}' http://localhost:8080/api/v1/calculate
+          curl -X POST -H 'Content-Type:application/json' -d '\{\"expression\":\"2+2\*2\"\}' http://localhost:8080/api/v1/calculate
+     вернет {"result":"6"}, т. к. выражение задано правильно и других ошибок нет.
 
-вернет
+  3. Команда
 
-{"result":"6"}
+          curl -X POST -H 'Content-Type:application/json' -d '\{\"expression\":\"+2\*2\"\}' http://localhost:8080/api/v1/calculate
+     вернет {"error":"Expression is not valid : simplecalc.Calc(expretion)"}, т. к. выражение составлено не правильно.
 
-т. к. выражение задано правильно и других ошибок нет.
+  5. Команда
 
-curl -X POST -H 'Content-Type:application/json' -d '\{\"expression\":\"+2\*2\"\}' http://localhost:8080/api/v1/calculate
+          curl -X POST -H 'Content-Type:application/json' -d '{"a":"a"}' http://localhost:8080/api/v1/calculate
+     вернет {"error":"Internal server error : json.Unmarshal"}, т. к. не передаётся "expression", т. е. программа не может найти ключ к выражению.
 
-вернет
 
-{"error":"Expression is not valid : simplecalc.Calc(expretion)"}
 
-т. к. выражение составлено не правильно.
-
-curl -X POST -H 'Content-Type:application/json' -d '{"a":"a"}' http://localhost:8080/api/v1/calculate
-
-вернет
-
-{"error":"Internal server error : json.Unmarshal"}
-
-т. к. не передаётся "expression", т. е. программа не может найти ключ к выражению.
