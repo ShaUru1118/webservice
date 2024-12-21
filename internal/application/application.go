@@ -74,11 +74,9 @@ func CalcHandler(w http.ResponseWriter, r *http.Request) {
 func StartServer() {
 	http.HandleFunc("/api/v1/calculate", CalcHandler)
 
-	fmt.Println("application: Start Server")
+	fmt.Println("application: Server Started")
 
-	if http.ListenAndServe(":8080", nil) == nil {
-		fmt.Println("application: Started Server")
-	}
+	http.ListenAndServe(":8080", nil)
 
-	fmt.Println("application: Stopped Server")
+	fmt.Println("application: Server Stopped")
 }
