@@ -80,5 +80,5 @@ func StartServer() {
 		fmt.Println("application: Started Server")
 	}
 
-	fmt.Println("application: Stopping Server")
+	fmt.Println("application: Stopped Server")
 }
